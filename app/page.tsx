@@ -349,30 +349,31 @@ export default function ChatBot() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-slate-900/60 backdrop-blur-xl border-b border-blue-500/20 px-6 py-4"
+          className="bg-slate-900/60 backdrop-blur-xl border-b border-blue-500/20 px-4 sm:px-6 py-3 sm:py-4"
         >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-3 sm:gap-4">
               <button
                 onClick={() => setIsSidebarOpen(true)}
                 className="text-gray-400 hover:text-white transition-colors"
               >
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="p-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg"
+                  className="p-1.5 sm:p-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg"
                 >
-                  <Bot className="w-5 h-5 text-white" />
+                  <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </motion.div>
                 <div>
-                  <h1 className="text-xl font-bold text-white flex items-center gap-2">
-                    AI Chat Assistant
-                    <Sparkles className="w-5 h-5 text-cyan-400" />
+                  <h1 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                    <span className="hidden sm:inline">AI Chat Assistant</span>
+                    <span className="sm:hidden">AI Assistant</span>
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
                   </h1>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-xs sm:text-sm text-gray-400">
                     {isTemporaryChat ? 'Temporary Chat - Not Saved' : 'Powered by Advanced AI'}
                   </p>
                 </div>
@@ -380,49 +381,53 @@ export default function ChatBot() {
             </div>
             
             {/* Feature Buttons */}
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setDeepSearch(!deepSearch)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 ${
+                className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1 sm:gap-2 ${
                   deepSearch 
                     ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' 
                     : 'bg-slate-800/50 text-gray-300 hover:bg-slate-800/70'
                 }`}
               >
-                <Zap className="w-4 h-4" />
-                Deep Search
+                <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden xs:inline">Deep Search</span>
+                <span className="xs:hidden">Deep</span>
               </motion.button>
               
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => fileInputRef.current?.click()}
-                className="px-4 py-2 bg-slate-800/50 text-gray-300 hover:bg-slate-800/70 rounded-lg font-medium transition-all duration-200 flex items-center gap-2"
+                className="px-2 sm:px-4 py-1.5 sm:py-2 bg-slate-800/50 text-gray-300 hover:bg-slate-800/70 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1 sm:gap-2"
               >
-                <Camera className="w-4 h-4" />
-                Upload Image
+                <Camera className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden xs:inline">Upload</span>
+                <span className="xs:hidden">📷</span>
               </motion.button>
               
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleWebSearch}
-                className="px-4 py-2 bg-slate-800/50 text-gray-300 hover:bg-slate-800/70 rounded-lg font-medium transition-all duration-200 flex items-center gap-2"
+                className="px-2 sm:px-4 py-1.5 sm:py-2 bg-slate-800/50 text-gray-300 hover:bg-slate-800/70 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1 sm:gap-2"
               >
-                <Globe className="w-4 h-4" />
-                Web Search
+                <Globe className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden xs:inline">Web Search</span>
+                <span className="xs:hidden">🌐</span>
               </motion.button>
               
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleResearch}
-                className="px-4 py-2 bg-slate-800/50 text-gray-300 hover:bg-slate-800/70 rounded-lg font-medium transition-all duration-200 flex items-center gap-2"
+                className="px-2 sm:px-4 py-1.5 sm:py-2 bg-slate-800/50 text-gray-300 hover:bg-slate-800/70 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1 sm:gap-2"
               >
-                <BookOpen className="w-4 h-4" />
-                Research
+                <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden xs:inline">Research</span>
+                <span className="xs:hidden">📚</span>
               </motion.button>
             </div>
           </div>
@@ -524,14 +529,14 @@ export default function ChatBot() {
         </div>
 
         {/* Input Area */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border-t border-blue-500/20 p-6">
+        <div className="bg-slate-900/60 backdrop-blur-xl border-t border-blue-500/20 p-4 sm:p-6">
           <div className="max-w-4xl mx-auto">
             {/* Image Preview */}
             {imagePreview && (
               <div className="mb-4 p-3 bg-slate-800/50 rounded-lg flex items-center gap-3">
-                <Image src={imagePreview} alt="Preview" width={64} height={64} className="w-16 h-16 object-cover rounded-lg" />
-                <div className="flex-1">
-                  <p className="text-sm text-white font-medium">{selectedFile?.name}</p>
+                <Image src={imagePreview} alt="Preview" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm text-white font-medium truncate">{selectedFile?.name}</p>
                   <p className="text-xs text-gray-400">Image ready for analysis</p>
                 </div>
                 <button
@@ -539,45 +544,45 @@ export default function ChatBot() {
                     setImagePreview(null)
                     setSelectedFile(null)
                   }}
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-400 hover:text-white flex-shrink-0"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             )}
             
-            <div className="flex gap-3">
+            <div className="flex gap-2 sm:gap-3">
               <motion.div
                 whileFocus={{ scale: 1.02 }}
                 className="flex-1 relative"
               >
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
                 <input
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder={deepSearch ? "Deep search mode - Ask me anything with enhanced research..." : "Ask me anything or search for information..."}
-                  className="w-full pl-12 pr-4 py-4 bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/40 focus:bg-slate-800/70 transition-all"
+                  placeholder={deepSearch ? "Deep search mode - Ask me anything..." : "Ask me anything..."}
+                  className="w-full pl-9 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/40 focus:bg-slate-800/70 transition-all text-sm sm:text-base"
                 />
               </motion.div>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => fileInputRef.current?.click()}
-                className="px-4 py-4 bg-slate-800/50 text-gray-300 hover:bg-slate-800/70 rounded-full font-medium transition-all duration-200"
+                className="px-3 sm:px-4 py-3 sm:py-4 bg-slate-800/50 text-gray-300 hover:bg-slate-800/70 rounded-full font-medium transition-all duration-200 flex-shrink-0"
               >
-                <ImageIcon className="w-5 h-5" />
+                <ImageIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleSend}
                 disabled={isTyping || (inputValue.trim() === '' && !selectedFile)}
-                className="px-6 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2"
+                className="px-3 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-medium hover:from-blue-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2 flex-shrink-0 text-sm sm:text-base"
               >
-                <Send className="w-5 h-5" />
-                Send
+                <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Send</span>
               </motion.button>
             </div>
             
